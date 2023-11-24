@@ -1,0 +1,17 @@
+Tempo_medio_box = 
+
+VAR horas = INT(AVERAGE(vw_boxes1[Tempo_Box]))
+VAR minutos = INT((AVERAGE(vw_boxes1[Tempo_Box]) - horas) * 60)
+VAR segundos = ROUND(((AVERAGE(vw_boxes1[Tempo_Box]) - horas) * 60 - minutos) * 60,0)
+
+VAR SS = IF(segundos = 0, segundos & 0, segundos)
+
+VAR MM = IF(segundos < 10, minutos * 10, IF(
+            segundos = 0, minutos * 100, minutos))
+
+VAR HH = IF(minutos < 10, horas * 10, IF(
+            minutos = 0, horas * 100, horas))
+
+RETURN
+
+VALUE(HH & MM & SS)            
