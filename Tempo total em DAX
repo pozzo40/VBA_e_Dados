@@ -1,0 +1,13 @@
+Tempo_total_box = 
+
+VAR horas=INT(SUM(vw_boxes1[Tempo_Box]))
+VAR minutos=INT((SUM(vw_boxes1[Tempo_Box])-horas)*60)
+VAR segundos=ROUND(((SUM(vw_boxes1[Tempo_Box])-horas)*60-minutos)*60,0)
+
+VAR HH = FORMAT(horas,"00")
+VAR MM = FORMAT(minutos,"00") 
+VAR SS = FORMAT(segundos,"00") 
+
+RETURN
+
+VALUE(HH & MM & SS)
